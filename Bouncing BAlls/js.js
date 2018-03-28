@@ -1,11 +1,10 @@
 var canvas=document.getElementById("myCanvas");
 var pen=canvas.getContext('2d');
-var nmax= 600; //maximum number of circles in max window width
-			//the number of circles decreases with the window size
+var nmax= 600; 
 
 var n=nmax;
 var h=canvas.height=window.innerHeight;
-var w=canvas.width=window.innerWidth; //Used to increase the quality var rmin=10;
+var w=canvas.width=window.innerWidth;
 var rmin=10;    //min circle rad possible
 var rmax=80;    //max circle rad possible
 var v=3;        //maximum moving velocity
@@ -56,16 +55,14 @@ function start(){
     		case 2: c[i]= "#993"; break;
     		case 3: c[i]= "#989"; break;
     		case 4: c[i]= "#667"; 
-    	}
-    //No use of ; even after switch statement 
-  	}
+    	} 
+   }
 }
 
 
 function update(){
  
-   // console.log(n);
-    pen.clearRect(0,0,w,h);
+       pen.clearRect(0,0,w,h);
  	for(var i=0; i<n;i++){
  		if(x[i]>w || x[i]<0)
  			vx[i]*=(-1);
@@ -78,9 +75,6 @@ function update(){
  		 
         drawCircle(x[i]+=vx[i],y[i]+=vy[i],c[i],r[i]);
     }
-
-    //console.log(m.x,m.y);
-
 	window.requestAnimationFrame(update);
 }
 
