@@ -19,28 +19,24 @@ var vy = [n];
 var dr = [n];
 var col= [n];
 
-var m ={x:undefined,y:undefined};//although circle and obj are same but they are two different variables and there is no concept of classes in js
-
+var m ={x:undefined,y:undefined};
 
 //Adding event listners
 //element.addEventListner ("type", func(event));
 window.addEventListener("mousemove",function(event){
 		m.x=event.x; 
-		m.y=event.y;//use console.log ot see details
+		m.y=event.y;
 		}
 	);
 
 
 
 function drawCircleWrtM(i){
-   	pen.beginPath();//start drawing
+   	pen.beginPath();
    	pen.arc(x[i] ,y[i],r[i],0,2*Math.PI);
-   	//pen.strokeStyle=col[i];
-    //pen.stroke();
-    pen.fillStyle=col[i];
-    pen.fill();
-    //console.log(x[i],y[i]);
-}
+        pen.fillStyle=col[i];
+        pen.fill();
+  }
 
 function init(i){
 	 	x[i]=m.x;
@@ -56,8 +52,6 @@ function init(i){
      	case 3 :col[i]= "#f43636e0"; break;
      	default:col[i]= "#edf436e0"; 
      };	
-    //c[i] = circle; they alll will point to same memory location although the circle.x is refering to different points st each call but unitll
-    //we are not creating a new variable each time all the memebers are having their root point at circle which is not changing 
 }
 
 function start(){
@@ -82,20 +76,9 @@ function update(){
 
     drawCircleWrtM(i);
   }
-  //If i would have considered the region to be a circle then the reflection and detection would have been difficult
-  //console.log(c);
 	window.requestAnimationFrame(update);
 }
 
 
 start();
 update();
-
-/*
-I had used here an array of circles where the circles were an object of type c{x,y,vx...}
-When i initialied a circle and changed the memebers and after that copied the value to the c[i] all the 
-circles were refering to the same address.
-So i better created an array of individual axes.
-Actually it is better because using x[i[ is better thn useing s[i].x
-*/
-
